@@ -1,0 +1,97 @@
+{
+    "label": {
+        "common": {
+            "simplifiedChinese": "简体中文",
+            "english": "English",
+            "username": "用户名",
+            "password": "密码",
+            "confirmPassword": "确认密码",
+            "login": "登录",
+            "serialNumber": "序号",
+            "account": "账号",
+            "fullName": "姓名",
+            "name": "名称",
+            "role": "角色",
+            "department": "部门",
+            "status": "状态",
+            "enable": "启用",
+            "disable": "禁用",
+            "email": "邮箱",
+            "phone": "电话",
+            "createTime": "创建时间",
+            "updateTime": "更新时间",
+            "actions": "操作",
+            "view": "查看",
+            "modify": "修改",
+            "delete": "删除",
+            "resetPassword": "重置密码",
+            "accountOrName": "账号/姓名",
+            "search": "搜索",
+            "add": "添加",
+            "save": "保存",
+            "cancel": "取消",
+            "confirm": "确认",
+            "selectDepartment": "选择部门",
+            "remind": "提醒",
+            "administrator": "管理员",
+            "sort": "排序",
+            "higherDept": "上级部门",
+            "alias": "别名"
+        },
+        "title": {
+            "controlPanel": "控制面板",
+            "userManagement": "用户管理",
+            "deptManagement": "部门管理",
+            "roleManagement": "角色管理",
+            "menuManagement": "菜单管理"
+        },
+        "login": {
+            "welcome": "欢迎"
+        },
+        "admin": {
+            "roleAssignments": "角色分配",
+            "addAdmin": "添加管理员",
+            "editAdmin": "编辑管理员",
+            "delAdmin": "删除管理员",
+            "isDeleteAdmin": "您是否要删除该管理员?",
+            "isEnableAdmin": "您是否要启用该管理员?",
+            "isDisableAdmin": "您是否要禁用该管理员?",
+            "isResetPassword": "您是否要重置该管理员密码?",
+            "rememberPassword": "请牢记密码"
+        }
+    },
+    "validate": {
+        "notEmpty": {
+            "common": {
+                "username": "用户名不能为空",
+                "password": "密码不能为空",
+                "confirmPassword": "确认密码密码不能为空"
+            }
+        },
+        "stringLength": {
+            "common": {
+                "username": "用户名最多只能{num}个字符",
+                "name": "姓名最多只能{num}个字符",
+                "email": "邮箱最多只能{num}个字符",
+                "password": "密码最多只能{num}个字符",
+                "confirmPassword": "确认密码最多只能{num}个字符"
+            }
+        },
+        "regexp": {
+            "username": "",
+            "password": "6-16个字符，需同时包含大小写字母和数字，可包含特殊字符~!@#$%^&*(.)-_+"
+        },
+        "notMatch": {
+            "password": "密码与确认密码不匹配"
+        },
+        "format": {
+            "email": "邮箱格式不正确"
+        }
+    },
+    "tooltip": {
+        "common": {},
+        "login": {
+            "success": "登录成功"
+        }
+    }
+}

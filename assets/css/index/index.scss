@@ -1,0 +1,49 @@
+@import "~assets/css/common/variables";
+
+.colored{
+    color: #FFF;
+    border: 0!important;
+}
+.emerald-bg{
+    background-color: $blue!important;
+}
+.green-bg{
+    background-color: $card-green!important;
+}
+.red-bg{
+    background-color: $card-red!important;
+}
+.purple-bg{
+    background-color: $card-purple!important;
+}
+.gray-bg{
+    background-color: $card-gray!important;
+}
+
+#index{
+    .index-card{
+        padding: 20px;
+
+        i{
+            width: 56px;
+            height: 56px;
+            line-height: 56px;
+        }
+    }
+
+    .index-tab{
+        .v-tabs-slider-wrapper {
+            //display:none;
+            top: 0;
+            //border-top: 2px solid #F00;
+        }
+        .v-tab--active{
+            background: #FFF;
+        }
+    }
+
+    #chart {
+        max-width: 650px;
+        margin: 35px auto;
+    }
+}

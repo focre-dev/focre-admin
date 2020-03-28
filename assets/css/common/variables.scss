@@ -1,0 +1,37 @@
+@import "colors";
+
+// Card color
+$card-green: $green;
+$card-blue: $blue;
+$card-red: $red;
+$card-purple: $purple;
+$card-gray: $gray;
+
+// Paddings
+$padding-logo:                      15px !default;
+$padding-avatar-title:              5px  !default;
+$padding-x-footer:                  24px !default;
+$padding-general:                   15px !default;
+
+$padding-small:                     10px !default;
+$margin-small:                      $padding-small;
+
+// Font Weight
+$font-weight-bolder:                500 !default;
+
+// Font size
+$font-size-small:                   12px !default;
+
+// Line Height
+$line-height-footer-items:          1.8 !default;
+
+//  Brand Colors
+$brand-primary:                    #9c27b0 !default;
+
+// Black Color
+$black-color:                       #495057 !default;
+
+//  Footer Border
+$footer-border-color:               #e7e7e7 !default;
+$footer-border-top:                 1px solid $footer-border-color !default;
+

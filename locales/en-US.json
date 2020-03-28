@@ -1,0 +1,94 @@
+{
+    "label": {
+        "common": {
+            "simplifiedChinese": "简体中文",
+            "english": "English",
+            "username": "Username",
+            "password": "Password",
+            "confirmPassword": "Confirm Password",
+            "login": "Login Now",
+            "serialNumber": "Serial Number",
+            "account": "Account",
+            "fullName": "Name",
+            "name": "Name",
+            "role": "Role",
+            "department": "Department",
+            "status": "Status",
+            "enable": "Enable",
+            "disable": "Disable",
+            "email": "Email",
+            "phone": "Phone",
+            "createTime": "CreateTime",
+            "updateTime": "UpdateTime",
+            "actions": "Operating",
+            "view": "View",
+            "modify": "Modify",
+            "delete": "Delete",
+            "resetPassword": "Reset Password",
+            "accountOrName": "Account / Name",
+            "search": "Search",
+            "add": "Add",
+            "save": "Save",
+            "cancel": "Cancel",
+            "confirm": "Confirm",
+            "selectDepartment": "Select Department",
+            "remind": "Remind",
+            "administrator": "Administrator",
+            "sort": "Sort",
+            "higherDept": "Higher office",
+            "alias": "Alias"
+        },
+        "title": {
+            "controlPanel": "Control Panel",
+            "userManagement": "User Management"
+        },
+        "login": {
+            "welcome": "Welcome"
+        },
+        "admin": {
+            "roleAssignments": "Role Assignments",
+            "addAdmin": "Add Administrator",
+            "editAdmin": "Edit Administrator",
+            "delAdmin": "Remove Administrator",
+            "isDeleteAdmin": "Do you want to delete this administrator?",
+            "isEnableAdmin": "Do you want to enable this administrator?",
+            "isDisableAdmin": "Do you want to disable the administrator?",
+            "isResetPassword": "Do you want to reset the administrator password?",
+            "rememberPassword": "Remember the password"
+        }
+    },
+    "validate": {
+        "notEmpty": {
+            "common": {
+                "username": "Username can't be empty",
+                "password": "Password can't be blank",
+                "confirmPassword": "Confirm password password cannot be empty"
+            }
+        },
+        "stringLength": {
+            "common": {
+                "username": "User name can only be up to {num} characters",
+                "name": "Name can only be up to {num} characters",
+                "email": "Email can only be up to {num} characters",
+                "password": "Password must be at most {num} characters",
+                "confirmPassword": "Confirm password can only be up to {num} characters"
+            }
+        },
+        "regexp": {
+            "username": "",
+            "password": "6-16 characters, including both uppercase and lowercase letters and numbers, can include special characters ~! @ # $% ^ & * (.) -_ +"
+        },
+        "notMatch": {
+            "password": "Password not match!"
+        },
+        "format": {
+            "email": "E-mail format is incorrect"
+        }
+    },
+    "tooltip": {
+        "common": {},
+        "login": {
+            "success": "Login Successful"
+        }
+    }
+}

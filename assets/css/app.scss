@@ -1,0 +1,42 @@
+html,body,#__nuxt,#__layout{
+    height: 100%;
+}
+.darkTheme {
+    @import "theme/dark-theme";
+}
+.lightTheme {
+    @import "theme/light-theme";
+}
+
+#content,
+#header{
+    background-color: #EBEBEB;
+}
+
+.v-footer a{
+    text-decoration: none;
+    color: #9c27b0!important;
+}
+
+#dashboard{
+    .info{
+        background-color: #00cae3 !important;
+        border-color: #00cae3 !important;
+    }
+    .card-red{
+        background-color: #e91e63 !important;
+        border-color: #e91e63 !important;
+    }
+    .card-success{
+        background-color: #4caf50 !important;
+        border-color: #4caf50 !important;
+    }
+    .card-orange{
+        background-color: #ff9800 !important;
+        border-color: #ff9800 !important;
+    }
+}
+
+@import "~assets/css/common/colors";
+@import "~assets/css/common/variables";
+@import "~assets/css/common/footer";
