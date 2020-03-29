@@ -173,6 +173,7 @@ export default {
             flagUrl: '',
             items: [
                 { icon: 'mdi-view-dashboard', text: '首页', url: '/' },
+                { icon: 'mdi-cog-outline', text: '博客配置', url: '/system' },
                 {
                     icon: 'mdi-shape',
                     text: '文章分类首页',

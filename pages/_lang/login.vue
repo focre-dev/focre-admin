@@ -47,7 +47,7 @@
                                     rounded
                                     outlined
                                     large
-                                    >{{ $t('label.common.login') }}</v-btn
+                                    >{{ $t('label.login.title') }}</v-btn
                                 >
                             </div>
                         </v-form>
