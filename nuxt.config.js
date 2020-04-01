@@ -31,7 +31,7 @@ export default {
     /*
      ** Global CSS
      */
-    css: ['~assets/css/app.scss', 'normalize.css/normalize.css'],
+    css: ['~assets/styles/app.scss', 'normalize.css/normalize.css'],
     router: {
         middleware: 'i18n'
     },

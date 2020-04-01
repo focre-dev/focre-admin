@@ -276,7 +276,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '@/assets/css/common/drawer.scss';
+@import '@/assets/styles/common/drawer.scss';
 .test {
     background-color: #f00;
 }

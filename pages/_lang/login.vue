@@ -1,130 +1,129 @@
 <template>
-    <v-container id="login" fluid fill-height>
-        <v-row align="center" justify="center" class="lighten-5">
-            <v-col cols="12" lg="3" md="4" sm="6" no-gutters>
-                <v-card dark flat color="transparent">
-                    <v-card-title>
-                        <v-row align="center" justify="center" class="lighten-5">
-                            <v-avatar size="64">
-                                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-                            </v-avatar>
+    <div class="panel-wrapper">
+        <span class="logo">
+            <img src="~/assets/images/logo.png" alt="" />
+        </span>
+
+        <div class="slogan-wrapper">
+            <div class="slogan">
+                <img src="~/assets/images/login-bg.svg" alt="" />
+            </div>
+        </div>
+
+        <div class="panel-content">
+            <v-app class="login-con">
+                <!-- <v-spacer></v-spacer> -->
+                <v-content>
+                    <v-container fluid fill-height>
+                        <v-row align-center justify-center>
+                            <v-col class="frame">
+                                <h1 v-if="!isMobile">
+                                    {{ $t('label.login.title') }}
+                                </h1>
+                                <v-form>
+                                    <v-text-field
+                                        v-model="form.username"
+                                        :label="$t('label.common.username')"
+                                        @keyup.enter.native="login"
+                                        prepend-icon="mdi-account"
+                                        clearable
+                                        required
+                                    ></v-text-field>
+                                    <v-text-field
+                                        v-model="form.password"
+                                        :append-icon="showPwd ? 'mdi-eye' : 'mdi-eye-off'"
+                                        :type="showPwd ? 'text' : 'password'"
+                                        @click:append="showPwd = !showPwd"
+                                        :label="$t('label.common.password')"
+                                        @keyup.enter.native="login"
+                                        prepend-icon="mdi-lock"
+                                        required
+                                    ></v-text-field>
+                                    <v-layout column wrap justify-end align-end>
+                                        <v-flex>
+                                            <v-btn :loading="loginLoading" @click="login">
+                                                <span slot="loader">Loading...</span>
+                                                {{ $t('label.login.title') }}
+                                            </v-btn>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-form>
+                            </v-col>
                         </v-row>
-                    </v-card-title>
-                    <v-card-subtitle class="text-center">{{ $t('label.login.welcome') }}</v-card-subtitle>
-                    <v-card-text>
-                        <v-form ref="form" v-model="valid" lazy-validation>
-                            <v-text-field
-                                v-model="username"
-                                :disabled="isUpdating"
-                                :rules="usernameRules"
-                                dark
-                                flat
-                                filled
-                                rounded
-                                color="blue-grey lighten-2"
-                                :label="$t('label.common.username')"
-                            ></v-text-field>
-                            <v-text-field
-                                v-model="password"
-                                :disabled="isUpdating"
-                                :rules="passwordRules"
-                                @keyup.enter.native="login"
-                                dark
-                                flat
-                                filled
-                                rounded
-                                type="password"
-                                color="blue-grey lighten-2"
-                                :label="$t('label.common.password')"
-                            ></v-text-field>
-                            <div class="text-center">
-                                <v-btn
-                                    @click="login()"
-                                    :disabled="loginBtnDisable"
-                                    class="text-center"
-                                    dark
-                                    text
-                                    rounded
-                                    outlined
-                                    large
-                                    >{{ $t('label.login.title') }}</v-btn
-                                >
-                            </div>
-                        </v-form>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row>
-        <error-message :isShow="isShow" :text="errorText"></error-message>
-    </v-container>
+                    </v-container>
+                </v-content>
+
+                <v-footer color="#fbfbfb" height="auto">
+                    <v-row>
+                        <v-col text-xs-center>
+                            <!-- {{ $t('common.copyrightMessage', { currentYear }) }} -->
+                        </v-col>
+                    </v-row>
+                </v-footer>
+            </v-app>
+        </div>
+    </div>
 </template>
 
 <script>
-import Auth from '@/assets/utils/auth'
 import FocreUtil from '@/assets/utils/focre-util'
-import ErrorMessage from '@/components/message/error'
 
 export default {
     name: 'Login',
-    components: { ErrorMessage },
+    components: {},
     data() {
         return {
-            // username: 'admin',
-            // password: 'focre',
-            username: 'admin',
-            password: '111111',
-            loginBtnDisable: false,
-
-            alignment: 'center',
-            dense: false,
-            justify: 'center',
-
-            isUpdating: false,
-
-            valid: true,
-            usernameRules: [
-                (v) => !!v || this.$t('validate.notEmpty.common.username'),
-                (v) => (v && v.length <= 20) || this.$t('validate.stringLength.common.username', { num: 20 })
-            ],
-            passwordRules: [
-                (v) => !!v || this.$t('validate.notEmpty.common.password'),
-                (v) => (v && v.length <= 100) || this.$t('validate.stringLength.common.password', { num: 100 })
-            ],
-            isShow: false,
-            errorText: ''
+            currentYear: new Date().getFullYear(),
+            showPwd: false,
+            form: {
+                username: 'admin',
+                password: 'admin123'
+            },
+            loginLoading: false
         }
     },
-    mounted() {},
-    methods: {
-        async login() {
-            const self = this
-            self.loginBtnDisable = true
-            if (!self.validate()) {
-                self.loginBtnDisable = false
-                return false
-            }
-            const params = {
-                username: self.username,
-                password: FocreUtil.md5ForCount(2, self.password)
-            }
-            const result = await this.$Auth.login(params)
-            const data = result.data
-            if (result.code === 200) {
-                Auth.setToken(data.token, data.randomKey)
-                self.$router.push(self.$i18n.path('/'))
-            } else {
-                self.errorText = result.msg
-                self.isShow = true
-                self.loginBtnDisable = false
-            }
-        },
-        validate() {
-            return !!this.$refs.form.validate()
+    computed: {
+        isMobile() {
+            return FocreUtil.isMobile()
         }
-    }
+    },
+    methods: {
+        login() {
+            if (!this.form.password || !this.form.username) {
+                return
+            }
+
+            this.loginLoading = true
+            this.$store
+                .dispatch('login', this.form)
+                .then(() => {
+                    try {
+                        this.$router.push({ name: 'Index' })
+                    } catch (err) {
+                        this.$router.push({ path: '/' })
+                    }
+                })
+                .catch((res) => {
+                    this.$message({
+                        type: 'error',
+                        text: this.$t('common.invalid_password_username')
+                    })
+                })
+                .finally(() => {
+                    this.loginLoading = false
+                })
+        },
+        redirectForgotPassword() {
+            this.$message({
+                type: 'info',
+                text: 'Ahem: Please add redirect function'
+            })
+        }
+    },
+    created() {}
 }
 </script>
-<style lang="scss"></style>
+
 <style lang="scss">
-@import '~assets/css/login/login.scss';
+@import '~assets/styles/login/login.scss';
 </style>

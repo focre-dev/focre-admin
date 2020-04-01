@@ -54,5 +54,5 @@ export default {
 }
 </script>
 <style lang="scss">
-@import '~assets/css/common/sidebar.scss';
+@import '~assets/styles/common/sidebar.scss';
 </style>

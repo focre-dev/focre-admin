@@ -100,4 +100,22 @@ export default class FocreUtil {
         lang = '/images/flags/' + lang + '.png'
         return lang
     }
+
+    /**
+     * 判断是不是手机端
+     * @returns {boolean}
+     */
+    static isMobile() {
+        if (process.client) {
+            return !!navigator.userAgent.match(/mobile/i)
+        }
+    }
+}
+
+/**
+ * 判断是不是手机端
+ * @returns {boolean}
+ */
+export function isMobile() {
+    return !!navigator.userAgent.match(/mobile/i)
 }

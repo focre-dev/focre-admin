@@ -137,5 +137,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/css/admin/index.scss';
+@import '~assets/styles/admin/index.scss';
 </style>

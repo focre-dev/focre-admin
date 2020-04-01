@@ -525,5 +525,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/css/index/index.scss';
+@import '~assets/styles/index/index.scss';
 </style>
