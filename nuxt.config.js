@@ -41,6 +41,7 @@ export default {
     plugins: [
         '@/plugins/i18n',
         '@/plugins/animejs',
+        '@/plugins/focre',
         '@/plugins/axios',
         '@/plugins/api',
         { src: '@/plugins/apexcharts', ssr: false },

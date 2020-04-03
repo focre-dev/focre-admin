@@ -39,14 +39,14 @@
                                         prepend-icon="mdi-lock"
                                         required
                                     ></v-text-field>
-                                    <v-layout column wrap justify-end align-end>
-                                        <v-flex>
+                                    <v-row column wrap justify-end align-end>
+                                        <v-col>
                                             <v-btn :loading="loginLoading" @click="login">
                                                 <span slot="loader">Loading...</span>
                                                 {{ $t('label.login.title') }}
                                             </v-btn>
-                                        </v-flex>
-                                    </v-layout>
+                                        </v-col>
+                                    </v-row>
                                 </v-form>
                             </v-col>
                         </v-row>
@@ -89,29 +89,8 @@ export default {
     },
     methods: {
         login() {
-            if (!this.form.password || !this.form.username) {
-                return
-            }
-
-            this.loginLoading = true
-            this.$store
-                .dispatch('login', this.form)
-                .then(() => {
-                    try {
-                        this.$router.push({ name: 'Index' })
-                    } catch (err) {
-                        this.$router.push({ path: '/' })
-                    }
-                })
-                .catch((res) => {
-                    this.$message({
-                        type: 'error',
-                        text: this.$t('common.invalid_password_username')
-                    })
-                })
-                .finally(() => {
-                    this.loginLoading = false
-                })
+            const self = this
+            self.$router.push(self.$i18n.path('/'))
         },
         redirectForgotPassword() {
             this.$message({

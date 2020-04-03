@@ -7,12 +7,17 @@
             "password": "Password"
         },
         "title": {
+            "home": "Home",
             "controlPanel": "Control Panel",
-            "blogSetting": "Blog settings"
+            "systemSetting": "System settings"
         },
         "login": {
             "title" : "Login",
             "welcome": "Welcome"
+        },
+        "system": {
+            "basicConfig": "Basic Settings",
+            "seoConfig": "SEO Settings"
         }
     },
     "validate": {

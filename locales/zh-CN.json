@@ -7,12 +7,17 @@
             "password": "密码"
         },
         "title": {
+            "home": "控制面板",
             "controlPanel": "控制面板",
-            "blogSetting": "博客设置"
+            "systemSetting": "系统设置"
         },
         "login": {
             "title" : "登录",
             "welcome": "欢迎"
+        },
+        "system": {
+            "basicConfig" : "基本设置",
+            "seoConfig" : "SEO设置"
         }
     },
     "validate": {
