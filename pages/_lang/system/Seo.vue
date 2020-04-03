@@ -35,19 +35,11 @@
                                         </v-list-item>
                                     </v-list>
 
-                                    <v-text-field
-                                        v-model="webSiteRecordNumber"
-                                        label="网站备案号"
-                                        required
-                                    ></v-text-field>
+                                    <v-text-field v-model="blogUrl" label="网站备案号" required></v-text-field>
 
-                                    <v-text-field
-                                        v-model="webSiteCopyright"
-                                        label="网站版权说明"
-                                        required
-                                    ></v-text-field>
+                                    <v-text-field v-model="blogUrl" label="网站版权说明" required></v-text-field>
 
-                                    <v-btn color="info">保存</v-btn>
+                                    <v-btn color="info" @click="reset">保存</v-btn>
                                 </v-form>
                             </v-col>
                         </v-row>
@@ -61,7 +53,7 @@
 <script>
 import Breadcrumb from '@/components/common/breadcrumbs'
 export default {
-    name: 'Basic',
+    name: 'Seo',
     layout: 'frame',
     components: {
         Breadcrumb
@@ -95,10 +87,7 @@ export default {
             ],
             valid: true,
             blogTitle: '',
-            blogUrl: '',
-            logoUrl: '',
-            webSiteRecordNumber: '',
-            webSiteCopyright: ''
+            logoUrl: ''
         }
     },
     computed: {},

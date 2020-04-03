@@ -2,19 +2,20 @@
     <v-app>
         <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
             <v-list>
-                <template v-for="item in items">
+                <template v-for="item in navList">
                     <template v-if="item.children">
-                        <template v-for="child in item.children">
-                            <v-list-group :prepend-icon="item.icon">
-                                <template v-slot:activator>
-                                    <v-list-item-title>{{ item.text }}</v-list-item-title>
-                                </template>
+                        <!--                        <v-list-group :prepend-icon="item.icon" :value="isUpdateDropDown(item.url, item.children)">-->
+                        <v-list-group :prepend-icon="item.icon" :value="item.model">
+                            <template v-slot:activator>
+                                <v-list-item-title>{{ item.text }}</v-list-item-title>
+                            </template>
+                            <template v-for="child in item.children">
                                 <v-list-item :to="$i18n.path(child.url)">
                                     <v-list-item-icon></v-list-item-icon>
                                     <v-list-item-title>{{ child.text }}</v-list-item-title>
                                 </v-list-item>
-                            </v-list-group>
-                        </template>
+                            </template>
+                        </v-list-group>
                     </template>
                     <template v-else>
                         <v-list-item :to="$i18n.path(item.url)">
@@ -35,7 +36,7 @@
                 <span class="hidden-sm-and-down">Focre</span>
             </v-toolbar-title>
             <v-spacer />
-            <v-btn icon>
+            <!--<v-btn icon>
                 <v-icon>mdi-apps</v-icon>
             </v-btn>
             <v-btn icon>
@@ -45,7 +46,21 @@
                 <v-avatar size="32px" item>
                     <v-img src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify"
                 /></v-avatar>
-            </v-btn>
+            </v-btn>-->
+            <v-menu offset-y>
+                <template v-slot:activator="{ on }">
+                    <v-btn tile color="transparent" v-on="on">
+                        <v-img src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify" width="1.25rem" />
+                        <span class="pl-1">切换语言</span>
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <v-list-item v-for="(item, i) in items" :key="i">
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
         </v-app-bar>
         <div id="main-container" class="main-container">
             <v-content>
@@ -55,7 +70,6 @@
                     </v-slide-y-transition>
                 </v-container>
             </v-content>
-            <app-main />
         </div>
     </v-app>
 </template>
@@ -75,26 +89,31 @@ export default {
     data() {
         return {
             drawer: null,
-            items: [
+            navList: [
                 { icon: 'mdi-home', text: '首页', url: '/' },
                 {
                     icon: 'mdi-cog-outline',
                     text: '系统设置',
+                    url: '/system',
                     model: false,
-                    children: [{ icon: 'mdi-plus', text: '基本设置', url: this.$i18n.path('/system/basic') }]
+                    children: [
+                        { icon: 'mdi-plus', text: '基本设置', url: this.$i18n.path('/system/basic') },
+                        { icon: 'mdi-plus', text: 'SEO设置', url: this.$i18n.path('/system/seo') }
+                    ]
                 },
                 {
                     icon: 'mdi-lock',
                     text: '测试',
-                    model: false,
+                    model: true,
                     children: [{ icon: 'mdi-plus', text: 'Create label', url: '/test' }]
                 }
-            ]
+            ],
+            items: [{ title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me 2' }]
         }
     },
     created() {},
     mounted() {
-        // const self = this
+        const self = this
         // 建议主题由后台设置
         // self.themeName = 'lightTheme'
 
@@ -114,8 +133,21 @@ export default {
                     break
             }
         }
+        self.isUpdateDropDown()
     },
-    methods: {}
+    methods: {
+        isUpdateDropDown() {
+            const self = this
+            const nowUrl = self.$route.path
+            self.navList.forEach((item) => {
+                if (item.children) {
+                    if (nowUrl.includes(item.url)) {
+                        item.model = true
+                    }
+                }
+            })
+        }
+    }
 }
 </script>
 <style lang="scss">

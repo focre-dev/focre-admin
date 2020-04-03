@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-toolbar v-if="fillHeader" flat dense color="transparent" :height="toolbarHeight" card>
+        <v-toolbar v-if="fillHeader" :height="toolbarHeight" flat dense color="transparent">
             <v-toolbar-title>
                 <v-subheader class="pl-0">
                     {{ title }}
