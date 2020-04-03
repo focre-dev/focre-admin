@@ -36,7 +36,6 @@
                                     </v-list>
 
                                     <v-text-field v-model="blogUrl" label="网站备案号" required></v-text-field>
-                                    <v-text-field v-model="blogUrl" label="网站备案号" required></v-text-field>
 
                                     <v-text-field v-model="blogUrl" label="网站版权说明" required></v-text-field>
 
