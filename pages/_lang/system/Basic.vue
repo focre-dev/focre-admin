@@ -6,7 +6,7 @@
             </v-col>
 
             <v-col cols="12" md="12">
-                <v-basic-card :title="$t('label.system.basicConfig')" toolbar-height="56">
+                <v-basic-card :title="$t('label.system.basicConfig')" toolbar-height="56" icon="mdi-wrench-outline">
                     <template slot="card-content">
                         <v-row wrap>
                             <v-col cols="12" md="3">

@@ -6,18 +6,30 @@
             </v-col>
 
             <v-col cols="12" md="12">
-                <v-basic-card :title="$t('label.system.seoConfig')" toolbar-height="56" icon="mdi-saw-blade">
+                <v-basic-card
+                    :title="$t('label.system.annexConfig')"
+                    toolbar-height="56"
+                    icon="mdi-image-filter-black-white"
+                >
                     <template slot="card-content">
                         <v-row wrap>
                             <v-col cols="12" md="3">
                                 <v-form ref="form" v-model="valid" lazy-validation>
-                                    <p>屏蔽搜索引擎</p>
+                                    <v-text-field
+                                        v-model="blogUrl"
+                                        label="最大上传文件数"
+                                        class="pt-4"
+                                        required
+                                    ></v-text-field>
 
-                                    <v-switch v-model="ex11" color="info" value="info" hide-details></v-switch>
+                                    <v-text-field
+                                        v-model="blogUrl"
+                                        label="同时上传文件数"
+                                        class="pt-4"
+                                        required
+                                    ></v-text-field>
 
-                                    <v-text-field v-model="blogUrl" label="关键词" class="pt-4" required></v-text-field>
-
-                                    <v-textarea name="input-7-1" label="博客描述" auto-grow value=""></v-textarea>
+                                    <v-select v-model="model" :items="storageType" label="存储位置"> </v-select>
 
                                     <v-btn color="info" @click="reset">保存</v-btn>
                                 </v-form>
@@ -33,7 +45,7 @@
 <script>
 import Breadcrumb from '@/components/common/breadcrumbs'
 export default {
-    name: 'Seo',
+    name: 'Annex',
     layout: 'frame',
     components: {
         Breadcrumb
@@ -51,23 +63,16 @@ export default {
                     disabled: true
                 },
                 {
-                    text: this.$t('label.system.seoConfig'),
+                    text: this.$t('label.system.annexConfig'),
                     disabled: true
                 }
             ],
             tab: null,
-            items: [
-                { tab: '常规设置' },
-                { tab: 'SEO设置' },
-                { tab: '文章设置' },
-                { tab: '评论设置' },
-                { tab: '附件设置' },
-                { tab: 'SMTP服务' },
-                { tab: '其他设置' }
-            ],
             valid: true,
             blogTitle: '',
-            logoUrl: ''
+            logoUrl: '',
+            storageType: ['本地', '七牛云', '阿里云', '腾讯云'],
+            model: '本地'
         }
     },
     computed: {},

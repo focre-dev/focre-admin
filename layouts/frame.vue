@@ -49,7 +49,7 @@
             </v-btn>-->
             <v-menu offset-y>
                 <template v-slot:activator="{ on }">
-                    <v-btn tile color="transparent" v-on="on">
+                    <v-btn tile color="transparent" v-on="on" elevation="0  ">
                         <v-img src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify" width="1.25rem" />
                         <span class="pl-1">切换语言</span>
                     </v-btn>
@@ -98,7 +98,8 @@ export default {
                     model: false,
                     children: [
                         { icon: 'mdi-plus', text: '基本设置', url: this.$i18n.path('/system/basic') },
-                        { icon: 'mdi-plus', text: 'SEO设置', url: this.$i18n.path('/system/seo') }
+                        { icon: 'mdi-plus', text: 'SEO设置', url: this.$i18n.path('/system/seo') },
+                        { icon: 'mdi-plus', text: '附件设置', url: this.$i18n.path('/system/annex') }
                     ]
                 },
                 {

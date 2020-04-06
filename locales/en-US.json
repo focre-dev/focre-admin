@@ -17,7 +17,8 @@
         },
         "system": {
             "basicConfig": "Basic Settings",
-            "seoConfig": "SEO Settings"
+            "seoConfig": "SEO Settings",
+            "annexConfig" : "Attachment settings"
         }
     },
     "validate": {

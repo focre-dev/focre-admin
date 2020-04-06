@@ -2,7 +2,8 @@
     <v-card>
         <v-toolbar v-if="fillHeader" :height="toolbarHeight" flat dense color="transparent">
             <v-toolbar-title>
-                <v-subheader class="pl-0">
+                <v-subheader class="pl-0 headline">
+                    <v-icon medium>{{ icon }}</v-icon>
                     {{ title }}
                 </v-subheader>
             </v-toolbar-title>
@@ -27,6 +28,9 @@ export default {
             default: undefined
         },
         title: {
+            type: String
+        },
+        icon: {
             type: String
         }
     }
