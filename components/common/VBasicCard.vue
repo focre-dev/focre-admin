@@ -3,7 +3,7 @@
         <v-toolbar v-if="fillHeader" :height="toolbarHeight" flat dense color="transparent">
             <v-toolbar-title>
                 <v-subheader class="pl-0 headline">
-                    <v-icon medium>{{ icon }}</v-icon>
+                    <v-icon medium class="pr-2">{{ icon }}</v-icon>
                     {{ title }}
                 </v-subheader>
             </v-toolbar-title>

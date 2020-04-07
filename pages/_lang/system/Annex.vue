@@ -67,7 +67,6 @@ export default {
                     disabled: true
                 }
             ],
-            tab: null,
             valid: true,
             blogTitle: '',
             logoUrl: '',

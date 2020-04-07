@@ -83,16 +83,6 @@ export default {
                     disabled: true
                 }
             ],
-            tab: null,
-            items: [
-                { tab: '常规设置' },
-                { tab: 'SEO设置' },
-                { tab: '文章设置' },
-                { tab: '评论设置' },
-                { tab: '附件设置' },
-                { tab: 'SMTP服务' },
-                { tab: '其他设置' }
-            ],
             valid: true,
             blogTitle: '',
             blogUrl: '',

@@ -18,7 +18,8 @@
         "system": {
             "basicConfig": "Basic Settings",
             "seoConfig": "SEO Settings",
-            "annexConfig" : "Attachment settings"
+            "annexConfig" : "Attachment settings",
+            "smtpConfig" : "SMTP settings"
         }
     },
     "validate": {

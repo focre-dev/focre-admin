@@ -99,7 +99,8 @@ export default {
                     children: [
                         { icon: 'mdi-plus', text: '基本设置', url: this.$i18n.path('/system/basic') },
                         { icon: 'mdi-plus', text: 'SEO设置', url: this.$i18n.path('/system/seo') },
-                        { icon: 'mdi-plus', text: '附件设置', url: this.$i18n.path('/system/annex') }
+                        { icon: 'mdi-plus', text: '附件设置', url: this.$i18n.path('/system/annex') },
+                        { icon: 'mdi-plus', text: 'SMTP设置', url: this.$i18n.path('/system/smtp') }
                     ]
                 },
                 {

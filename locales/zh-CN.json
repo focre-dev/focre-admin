@@ -7,7 +7,7 @@
             "password": "密码"
         },
         "title": {
-            "home": "控制面板",
+            "home": "首页",
             "controlPanel": "控制面板",
             "systemSetting": "系统设置"
         },
@@ -18,7 +18,8 @@
         "system": {
             "basicConfig" : "基本设置",
             "seoConfig" : "SEO设置",
-            "annexConfig" : "附件设置"
+            "annexConfig" : "附件设置",
+            "smtpConfig" : "SMTP设置"
         }
     },
     "validate": {
