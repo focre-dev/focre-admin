@@ -4,12 +4,14 @@
             "simplifiedChinese": "简体中文",
             "english": "English",
             "username": "Username",
-            "password": "Password"
+            "password": "Password",
+            "search": "Search"
         },
         "title": {
             "home": "Home",
             "controlPanel": "Control Panel",
-            "systemSetting": "System settings"
+            "systemSetting": "System settings",
+            "article" : "Article"
         },
         "login": {
             "title" : "Login",
@@ -20,6 +22,10 @@
             "seoConfig": "SEO Settings",
             "annexConfig" : "Attachment settings",
             "smtpConfig" : "SMTP settings"
+        },
+        "articles": {
+            "all": "All articles",
+            "write": "Write Article"
         }
     },
     "validate": {

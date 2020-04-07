@@ -92,6 +92,15 @@ export default {
             navList: [
                 { icon: 'mdi-home', text: '首页', url: '/' },
                 {
+                    icon: 'mdi-square-edit-outline',
+                    text: '文章',
+                    model: true,
+                    children: [
+                        { icon: 'mdi-plus', text: '所有文章', url: '/articles/list' },
+                        { icon: 'mdi-plus', text: '写文章', url: '/articles/write' }
+                    ]
+                },
+                {
                     icon: 'mdi-cog-outline',
                     text: '系统设置',
                     url: '/system',
@@ -102,12 +111,6 @@ export default {
                         { icon: 'mdi-plus', text: '附件设置', url: this.$i18n.path('/system/annex') },
                         { icon: 'mdi-plus', text: 'SMTP设置', url: this.$i18n.path('/system/smtp') }
                     ]
-                },
-                {
-                    icon: 'mdi-lock',
-                    text: '测试',
-                    model: true,
-                    children: [{ icon: 'mdi-plus', text: 'Create label', url: '/test' }]
                 }
             ],
             items: [{ title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me 2' }]

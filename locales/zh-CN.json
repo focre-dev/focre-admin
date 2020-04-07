@@ -4,12 +4,14 @@
             "simplifiedChinese": "简体中文",
             "english": "English",
             "username": "用户名",
-            "password": "密码"
+            "password": "密码",
+            "search": "搜索"
         },
         "title": {
             "home": "首页",
             "controlPanel": "控制面板",
-            "systemSetting": "系统设置"
+            "systemSetting": "系统设置",
+            "article" : "文章"
         },
         "login": {
             "title" : "登录",
@@ -20,6 +22,10 @@
             "seoConfig" : "SEO设置",
             "annexConfig" : "附件设置",
             "smtpConfig" : "SMTP设置"
+        },
+        "articles": {
+            "all": "所有文章",
+            "write": "写文章"
         }
     },
     "validate": {
