@@ -17,8 +17,23 @@ export default ({ app, store }) => {
 
     app.i18n.path = (link) => {
         if (app.i18n.locale === app.i18n.fallbackLocale) {
-            return `${link}`
+            let url = `${link}`
+            for (const value of Locale) {
+                const lang = '/' + value
+                url = url.replace(lang, '')
+            }
+            return url
+        } else {
+            let url = `/${app.i18n.locale}${link}`
+            const len = url.split(`/${app.i18n.locale}`).length - 1
+            if (len > 1) {
+                url = url.replace(`/${app.i18n.locale}`, '')
+            }
+            if (len > 1) {
+                return `${link}`
+            } else {
+                return url
+            }
         }
-        return `/${app.i18n.locale}${link}`
     }
 }

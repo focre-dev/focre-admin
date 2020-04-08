@@ -10,7 +10,7 @@
         "title": {
             "home": "Home",
             "controlPanel": "Control Panel",
-            "systemSetting": "System settings",
+            "systemSetting": "System Config",
             "article" : "Article"
         },
         "login": {

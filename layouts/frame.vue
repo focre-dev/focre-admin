@@ -10,7 +10,7 @@
                                 <v-list-item-title>{{ item.text }}</v-list-item-title>
                             </template>
                             <template v-for="child in item.children">
-                                <v-list-item :to="$i18n.path(child.url)">
+                                <v-list-item :to="$i18n.path(child.url)" :exact="true" :nuxt="true" link>
                                     <v-list-item-icon></v-list-item-icon>
                                     <v-list-item-title>{{ child.text }}</v-list-item-title>
                                 </v-list-item>
@@ -18,7 +18,7 @@
                         </v-list-group>
                     </template>
                     <template v-else>
-                        <v-list-item :to="$i18n.path(item.url)">
+                        <v-list-item :to="$i18n.path(item.url)" :exact="true" :nuxt="true" link>
                             <v-list-item-icon>
                                 <v-icon>{{ item.icon }}</v-icon>
                             </v-list-item-icon>
@@ -50,14 +50,16 @@
             <v-menu offset-y>
                 <template v-slot:activator="{ on }">
                     <v-btn tile color="transparent" v-on="on" elevation="0  ">
-                        <v-img src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify" width="1.25rem" />
-                        <span class="pl-1">切换语言</span>
+                        <v-icon>mdi-translate</v-icon>
+                        <span class="pl-1 text-none subtitle-1">{{ lang }}</span>
                     </v-btn>
                 </template>
 
                 <v-list>
-                    <v-list-item v-for="(item, i) in items" :key="i">
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item v-for="(item, i) in languages" :key="i">
+                        <v-list-item-title @click="switchLanguage(item.lang, item.text)" class="frame-lang">{{
+                            item.text
+                        }}</v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
@@ -90,39 +92,64 @@ export default {
         return {
             drawer: null,
             navList: [
-                { icon: 'mdi-home', text: '首页', url: '/' },
+                { icon: 'mdi-home', text: this.$t('label.title.home'), url: this.$i18n.path('/') },
                 {
                     icon: 'mdi-square-edit-outline',
-                    text: '文章',
+                    text: this.$t('label.title.article'),
                     model: true,
                     children: [
-                        { icon: 'mdi-plus', text: '所有文章', url: '/articles/list' },
-                        { icon: 'mdi-plus', text: '写文章', url: '/articles/write' }
+                        {
+                            icon: 'mdi-plus',
+                            text: this.$t('label.articles.all'),
+                            url: this.$i18n.path('/articles/list')
+                        },
+                        {
+                            icon: 'mdi-plus',
+                            text: this.$t('label.articles.write'),
+                            url: this.$i18n.path('/articles/write')
+                        }
                     ]
                 },
                 {
                     icon: 'mdi-cog-outline',
-                    text: '系统设置',
+                    text: this.$t('label.title.systemSetting'),
                     url: '/system',
                     model: false,
                     children: [
-                        { icon: 'mdi-plus', text: '基本设置', url: this.$i18n.path('/system/basic') },
-                        { icon: 'mdi-plus', text: 'SEO设置', url: this.$i18n.path('/system/seo') },
-                        { icon: 'mdi-plus', text: '附件设置', url: this.$i18n.path('/system/annex') },
-                        { icon: 'mdi-plus', text: 'SMTP设置', url: this.$i18n.path('/system/smtp') }
+                        {
+                            icon: 'mdi-plus',
+                            text: this.$t('label.system.basicConfig'),
+                            url: this.$i18n.path('/system/basic')
+                        },
+                        {
+                            icon: 'mdi-plus',
+                            text: this.$t('label.system.seoConfig'),
+                            url: this.$i18n.path('/system/seo')
+                        },
+                        {
+                            icon: 'mdi-plus',
+                            text: this.$t('label.system.annexConfig'),
+                            url: this.$i18n.path('/system/annex')
+                        },
+                        {
+                            icon: 'mdi-plus',
+                            text: this.$t('label.system.smtpConfig'),
+                            url: this.$i18n.path('/system/smtp')
+                        }
                     ]
                 }
             ],
-            items: [{ title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me 2' }]
+            lang: '',
+            languages: [
+                { text: '简体中文', lang: 'zh-CN' },
+                { text: 'English', lang: 'en-US' }
+            ]
         }
     },
     created() {},
     mounted() {
         const self = this
-        // 建议主题由后台设置
-        // self.themeName = 'lightTheme'
-
-        const localStore = FocreUtil.getStore('lang')
+        let localStore = FocreUtil.getStore('lang')
         if (localStore === '' || localStore === null) {
             // eslint-disable-next-line no-unused-vars
             const lang = FocreUtil.getBrowserLanguage()
@@ -138,6 +165,14 @@ export default {
                     break
             }
         }
+        localStore = FocreUtil.getStore('lang')
+        for (const value of self.languages) {
+            console.log(value)
+            if (localStore === value.lang) {
+                self.lang = value.text
+            }
+        }
+        // self.lang =
         self.isUpdateDropDown()
     },
     methods: {
@@ -151,6 +186,17 @@ export default {
                     }
                 }
             })
+        },
+        switchLanguage(lang, langText) {
+            const self = this
+            self.lang = langText
+            if (self.$i18n.fallbackLocale === lang) {
+                // eslint-disable-next-line no-useless-escape
+                self.$router.push(self.$route.fullPath.replace(/^\/[^\/]+/, ''))
+            } else {
+                self.$router.push('/' + lang + self.$route.fullPath)
+            }
+            self.$vuetify.lang.current = FocreUtil.chooseVuetifyLang(lang)
         }
     }
 }
@@ -161,5 +207,8 @@ export default {
     width: 100%;
     position: relative;
     overflow-y: auto;
+}
+.frame-lang {
+    cursor: pointer;
 }
 </style>
