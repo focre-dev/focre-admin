@@ -7,12 +7,12 @@
                         <!--                        <v-list-group :prepend-icon="item.icon" :value="isUpdateDropDown(item.url, item.children)">-->
                         <v-list-group :prepend-icon="item.icon" :value="item.model">
                             <template v-slot:activator>
-                                <v-list-item-title>{{ item.text }}</v-list-item-title>
+                                <v-list-item-title>{{ $t(item.text) }}</v-list-item-title>
                             </template>
                             <template v-for="child in item.children">
                                 <v-list-item :to="$i18n.path(child.url)" :exact="true" :nuxt="true" link>
                                     <v-list-item-icon></v-list-item-icon>
-                                    <v-list-item-title>{{ child.text }}</v-list-item-title>
+                                    <v-list-item-title>{{ $t(child.text) }}</v-list-item-title>
                                 </v-list-item>
                             </template>
                         </v-list-group>
@@ -23,7 +23,7 @@
                                 <v-icon>{{ item.icon }}</v-icon>
                             </v-list-item-icon>
 
-                            <v-list-item-title>{{ item.text }}</v-list-item-title>
+                            <v-list-item-title>{{ $t(item.text) }}</v-list-item-title>
                         </v-list-item>
                     </template>
                 </template>
@@ -92,48 +92,48 @@ export default {
         return {
             drawer: null,
             navList: [
-                { icon: 'mdi-home', text: this.$t('label.title.home'), url: this.$i18n.path('/') },
+                { icon: 'mdi-home', text: 'label.title.home', url: this.$i18n.path('/') },
                 {
                     icon: 'mdi-square-edit-outline',
-                    text: this.$t('label.title.article'),
+                    text: 'label.title.article',
                     model: true,
                     children: [
                         {
                             icon: 'mdi-plus',
-                            text: this.$t('label.articles.all'),
+                            text: 'label.articles.all',
                             url: this.$i18n.path('/articles/list')
                         },
                         {
                             icon: 'mdi-plus',
-                            text: this.$t('label.articles.write'),
+                            text: 'label.articles.write',
                             url: this.$i18n.path('/articles/write')
                         }
                     ]
                 },
                 {
                     icon: 'mdi-cog-outline',
-                    text: this.$t('label.title.systemSetting'),
+                    text: 'label.title.systemSetting',
                     url: '/system',
                     model: false,
                     children: [
                         {
                             icon: 'mdi-plus',
-                            text: this.$t('label.system.basicConfig'),
+                            text: 'label.system.basicConfig',
                             url: this.$i18n.path('/system/basic')
                         },
                         {
                             icon: 'mdi-plus',
-                            text: this.$t('label.system.seoConfig'),
+                            text: 'label.system.seoConfig',
                             url: this.$i18n.path('/system/seo')
                         },
                         {
                             icon: 'mdi-plus',
-                            text: this.$t('label.system.annexConfig'),
+                            text: 'label.system.annexConfig',
                             url: this.$i18n.path('/system/annex')
                         },
                         {
                             icon: 'mdi-plus',
-                            text: this.$t('label.system.smtpConfig'),
+                            text: 'label.system.smtpConfig',
                             url: this.$i18n.path('/system/smtp')
                         }
                     ]
@@ -167,12 +167,10 @@ export default {
         }
         localStore = FocreUtil.getStore('lang')
         for (const value of self.languages) {
-            console.log(value)
             if (localStore === value.lang) {
                 self.lang = value.text
             }
         }
-        // self.lang =
         self.isUpdateDropDown()
     },
     methods: {
@@ -189,6 +187,10 @@ export default {
         },
         switchLanguage(lang, langText) {
             const self = this
+            const locale = self.$store.state.locale
+            if (locale === lang) {
+                return
+            }
             self.lang = langText
             if (self.$i18n.fallbackLocale === lang) {
                 // eslint-disable-next-line no-useless-escape
