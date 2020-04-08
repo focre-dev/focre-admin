@@ -28,10 +28,12 @@ export default {
             default: undefined
         },
         title: {
-            type: String
+            type: String,
+            default: ''
         },
         icon: {
-            type: String
+            type: String,
+            default: ''
         }
     }
 }

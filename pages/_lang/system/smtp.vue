@@ -71,7 +71,7 @@
                                                         required
                                                     ></v-text-field>
 
-                                                    <v-btn color="info" @click="reset">保存</v-btn>
+                                                    <v-btn @click="reset" color="info">保存</v-btn>
                                                 </v-form>
                                             </v-col>
                                         </v-row>
@@ -106,7 +106,7 @@
                                                         value=""
                                                     ></v-textarea>
 
-                                                    <v-btn color="info" @click="reset">保存</v-btn>
+                                                    <v-btn @click="reset" color="info">保存</v-btn>
                                                 </v-form>
                                             </v-col>
                                         </v-row>
@@ -167,13 +167,6 @@ export default {
         beforeAvatarUpload(file) {
             const isJPG = file.type === 'image/png'
             const isLt2M = file.size / 1024 / 1024 < 2
-
-            if (!isJPG) {
-                console.error('上传头像图片只能是 JPG 格式!')
-            }
-            if (!isLt2M) {
-                console.error('上传头像图片大小不能超过 2MB!')
-            }
             return isJPG && isLt2M
         }
     }

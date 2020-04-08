@@ -5,23 +5,28 @@
             "english": "English",
             "username": "用户名",
             "password": "密码",
-            "search": "搜索"
+            "search": "搜索",
+            "save": "保存"
         },
         "title": {
             "home": "首页",
             "controlPanel": "控制面板",
             "systemSetting": "系统设置",
-            "article" : "文章"
+            "article": "文章"
         },
         "login": {
-            "title" : "登录",
+            "title": "登录",
             "welcome": "欢迎"
         },
         "system": {
-            "basicConfig" : "基本设置",
-            "seoConfig" : "SEO设置",
-            "annexConfig" : "附件设置",
-            "smtpConfig" : "SMTP设置"
+            "basicConfig": "基本设置",
+            "seoConfig": "SEO设置",
+            "annexConfig": "附件设置",
+            "smtpConfig": "SMTP设置",
+            "blogTitle": "博客标题",
+            "blogAddress": "博客地址",
+            "websiteRecordNumber": "网站备案号",
+            "websiteCopyright": "版权说明"
         },
         "articles": {
             "all": "所有文章",

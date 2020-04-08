@@ -36,22 +36,12 @@
                 <span class="hidden-sm-and-down">Focre</span>
             </v-toolbar-title>
             <v-spacer />
-            <!--<v-btn icon>
-                <v-icon>mdi-apps</v-icon>
-            </v-btn>
-            <v-btn icon>
-                <v-icon>mdi-bell</v-icon>
-            </v-btn>
-            <v-btn icon large>
-                <v-avatar size="32px" item>
-                    <v-img src="https://cdn.vuetifyjs.com/images/logos/logo.svg" alt="Vuetify"
-                /></v-avatar>
-            </v-btn>-->
-            <v-menu offset-y>
+            <v-menu v-model="menuDown" offset-y bottom left transition="slide-y-transition">
                 <template v-slot:activator="{ on }">
-                    <v-btn tile color="transparent" v-on="on" elevation="0  ">
+                    <v-btn v-on="on" tile color="transparent" elevation="0  ">
                         <v-icon>mdi-translate</v-icon>
-                        <span class="pl-1 text-none subtitle-1">{{ lang }}</span>
+                        <span class="pl-1 pr-1 text-none subtitle-1">{{ lang }}</span>
+                        <v-icon>{{ 'mdi-' + menuDownIcon }}</v-icon>
                     </v-btn>
                 </template>
 
@@ -139,11 +129,23 @@ export default {
                     ]
                 }
             ],
+            menuDown: false,
+            menuDownIcon: 'chevron-down',
             lang: '',
             languages: [
                 { text: '简体中文', lang: 'zh-CN' },
                 { text: 'English', lang: 'en-US' }
             ]
+        }
+    },
+    watch: {
+        menuDown(newVal, oldVal) {
+            const self = this
+            if (newVal === true) {
+                self.menuDownIcon = 'chevron-up'
+            } else {
+                self.menuDownIcon = 'chevron-down'
+            }
         }
     },
     created() {},

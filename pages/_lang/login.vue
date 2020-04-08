@@ -87,6 +87,7 @@ export default {
             return FocreUtil.isMobile()
         }
     },
+    created() {},
     methods: {
         login() {
             const self = this
@@ -98,8 +99,7 @@ export default {
                 text: 'Ahem: Please add redirect function'
             })
         }
-    },
-    created() {}
+    }
 }
 </script>
 

@@ -11,9 +11,15 @@
                         <v-row wrap>
                             <v-col cols="12" md="3">
                                 <v-form ref="form" v-model="valid" lazy-validation>
-                                    <v-text-field v-model="blogTitle" label="博客标题" required></v-text-field>
+                                    <v-text-field
+                                        v-model="blogTitle"
+                                        :label="$t('label.system.blogTitle')"
+                                    ></v-text-field>
 
-                                    <v-text-field v-model="blogUrl" label="博客地址" required></v-text-field>
+                                    <v-text-field
+                                        v-model="blogUrl"
+                                        :label="$t('label.system.blogAddress')"
+                                    ></v-text-field>
 
                                     <v-list two-line>
                                         <v-list-item class="px-0">
@@ -21,11 +27,11 @@
                                                 <v-list-item-title>Logo</v-list-item-title>
                                                 <v-list-item-subtitle>
                                                     <el-upload
-                                                        class="avatar-uploader"
-                                                        action="https://jsonplaceholder.typicode.com/posts/"
                                                         :show-file-list="false"
                                                         :on-success="handleAvatarSuccess"
                                                         :before-upload="beforeAvatarUpload"
+                                                        class="avatar-uploader"
+                                                        action="https://jsonplaceholder.typicode.com/posts/"
                                                     >
                                                         <img v-if="logoUrl" :src="logoUrl" class="avatar" />
                                                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -36,18 +42,16 @@
                                     </v-list>
 
                                     <v-text-field
-                                        v-model="webSiteRecordNumber"
-                                        label="网站备案号"
-                                        required
+                                        v-model="websiteRecordNumber"
+                                        :label="$t('label.system.websiteRecordNumber')"
                                     ></v-text-field>
 
                                     <v-text-field
-                                        v-model="webSiteCopyright"
-                                        label="网站版权说明"
-                                        required
+                                        v-model="websiteCopyright"
+                                        :label="$t('label.system.websiteCopyright')"
                                     ></v-text-field>
 
-                                    <v-btn color="info">保存</v-btn>
+                                    <v-btn color="info">{{ $t('label.common.save') }}</v-btn>
                                 </v-form>
                             </v-col>
                         </v-row>
@@ -87,8 +91,8 @@ export default {
             blogTitle: '',
             blogUrl: '',
             logoUrl: '',
-            webSiteRecordNumber: '',
-            webSiteCopyright: ''
+            websiteRecordNumber: '',
+            websiteCopyright: ''
         }
     },
     computed: {},
@@ -101,13 +105,6 @@ export default {
         beforeAvatarUpload(file) {
             const isJPG = file.type === 'image/png'
             const isLt2M = file.size / 1024 / 1024 < 2
-
-            if (!isJPG) {
-                console.error('上传头像图片只能是 JPG 格式!')
-            }
-            if (!isLt2M) {
-                console.error('上传头像图片大小不能超过 2MB!')
-            }
             return isJPG && isLt2M
         }
     }

@@ -5,7 +5,8 @@
             "english": "English",
             "username": "Username",
             "password": "Password",
-            "search": "Search"
+            "search": "Search",
+            "save": "Save"
         },
         "title": {
             "home": "Home",
@@ -21,7 +22,11 @@
             "basicConfig": "Basic Settings",
             "seoConfig": "SEO Settings",
             "annexConfig" : "Attachment settings",
-            "smtpConfig" : "SMTP settings"
+            "smtpConfig" : "SMTP settings",
+            "blogTitle": "BlogTitle",
+            "blogAddress": "blogAddress",
+            "websiteRecordNumber": "WebsiteRecordNumber",
+            "websiteCopyright": "Copyright Statement"
         },
         "articles": {
             "all": "All articles",

@@ -21,11 +21,11 @@
                                                 <v-list-item-title>Logo</v-list-item-title>
                                                 <v-list-item-subtitle>
                                                     <el-upload
-                                                        class="avatar-uploader"
-                                                        action="https://jsonplaceholder.typicode.com/posts/"
                                                         :show-file-list="false"
                                                         :on-success="handleAvatarSuccess"
                                                         :before-upload="beforeAvatarUpload"
+                                                        class="avatar-uploader"
+                                                        action="https://jsonplaceholder.typicode.com/posts/"
                                                     >
                                                         <img v-if="logoUrl" :src="logoUrl" class="avatar" />
                                                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -101,13 +101,6 @@ export default {
         beforeAvatarUpload(file) {
             const isJPG = file.type === 'image/png'
             const isLt2M = file.size / 1024 / 1024 < 2
-
-            if (!isJPG) {
-                console.error('上传头像图片只能是 JPG 格式!')
-            }
-            if (!isLt2M) {
-                console.error('上传头像图片大小不能超过 2MB!')
-            }
             return isJPG && isLt2M
         }
     }
