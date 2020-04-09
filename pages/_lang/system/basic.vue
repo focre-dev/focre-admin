@@ -14,11 +14,13 @@
                                     <v-text-field
                                         v-model="blogTitle"
                                         :label="$t('label.system.blogTitle')"
+                                        :rules="blogTitleRules"
                                     ></v-text-field>
 
                                     <v-text-field
                                         v-model="blogUrl"
                                         :label="$t('label.system.blogAddress')"
+                                        :rules="blogUrlRules"
                                     ></v-text-field>
 
                                     <v-list two-line>
@@ -89,7 +91,15 @@ export default {
             ],
             valid: true,
             blogTitle: '',
+            blogTitleRules: [
+                (v) => !!v || this.$t('validate.notEmpty.system.blogTitle'),
+                (v) => (v && v.length <= 10) || 'Name must be less than 10 characters'
+            ],
             blogUrl: '',
+            blogUrlRules: [
+                (v) => !!v || this.$t('validate.notEmpty.system.blogUrl'),
+                (v) => (v && v.length <= 10) || 'Name must be less than 10 characters'
+            ],
             logoUrl: '',
             websiteRecordNumber: '',
             websiteCopyright: ''

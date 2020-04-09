@@ -24,8 +24,8 @@
             "annexConfig" : "Attachment settings",
             "smtpConfig" : "SMTP settings",
             "blogTitle": "BlogTitle",
-            "blogAddress": "blogAddress",
-            "websiteRecordNumber": "WebsiteRecordNumber",
+            "blogAddress": "Blog Address",
+            "websiteRecordNumber": "Website Record Number",
             "websiteCopyright": "Copyright Statement"
         },
         "articles": {
@@ -39,6 +39,10 @@
                 "username": "Username can't be empty",
                 "password": "Password can't be blank",
                 "confirmPassword": "Confirm password password cannot be empty"
+            },
+            "system": {
+                "blogTitle": "The blog title cannot be empty",
+                "blogUrl": "The blog address cannot be empty"
             }
         },
         "stringLength": {
