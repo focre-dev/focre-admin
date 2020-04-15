@@ -7,6 +7,8 @@ export default ($axios) => (resource) => ({
      * @returns {*}
      */
     login(params) {
+        console.log($axios)
+        console.log(resource)
         return $axios.$post(`${resource}/token`, params)
     }
 })

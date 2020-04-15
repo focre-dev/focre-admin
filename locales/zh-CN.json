@@ -40,8 +40,8 @@
                 "password": "密码不能为空",
                 "confirmPassword": "确认密码密码不能为空"
             },
-            "system" : {
-                "blogTitle" : "博客标题不能为空",
+            "system": {
+                "blogTitle": "博客标题不能为空",
                 "blogUrl": "博客地址不能为空"
             }
         },
@@ -52,6 +52,10 @@
                 "email": "邮箱最多只能{num}个字符",
                 "password": "密码最多只能{num}个字符",
                 "confirmPassword": "确认密码最多只能{num}个字符"
+            },
+            "system": {
+                "blogTitle": "博客标题最多只能{num}个字符",
+                "blogAddress": "博客地址最多只能{num}个字符"
             }
         },
         "regexp": {

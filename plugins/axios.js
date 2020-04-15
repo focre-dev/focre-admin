@@ -6,10 +6,9 @@ export default function({ $axios, redirect, app }) {
     $axios.setHeader('Content-Type', 'application/json;charset=UTF-8')
     $axios.setHeader('Accept-Language', app.i18n.locale)
     $axios.setHeader('Client-Type', 1)
+    console.warn($axios)
     if (process.client) {
-        // eslint-disable-next-line no-constant-condition
-        if (!'token') return
-        let token = window.localStorage.getItem(name)
+        let token = window.localStorage.getItem('token')
         if (token == null) {
             token = ''
         }

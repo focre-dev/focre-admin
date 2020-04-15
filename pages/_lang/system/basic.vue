@@ -32,8 +32,9 @@
                                                         :show-file-list="false"
                                                         :on-success="handleAvatarSuccess"
                                                         :before-upload="beforeAvatarUpload"
+                                                        :http-request="fileUpload"
                                                         class="avatar-uploader"
-                                                        action="https://jsonplaceholder.typicode.com/posts/"
+                                                        name="file"
                                                     >
                                                         <img v-if="logoUrl" :src="logoUrl" class="avatar" />
                                                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -66,6 +67,8 @@
 
 <script>
 import Breadcrumb from '@/components/common/breadcrumbs'
+import { baseUrl } from '@/config/env.js'
+
 export default {
     name: 'Basic',
     layout: 'frame',
@@ -93,16 +96,20 @@ export default {
             blogTitle: '',
             blogTitleRules: [
                 (v) => !!v || this.$t('validate.notEmpty.system.blogTitle'),
-                (v) => (v && v.length <= 10) || 'Name must be less than 10 characters'
+                (v) => (v && v.length <= 50) || this.$t('validate.stringLength.system.blogTitle', { num: 50 })
             ],
             blogUrl: '',
             blogUrlRules: [
                 (v) => !!v || this.$t('validate.notEmpty.system.blogUrl'),
-                (v) => (v && v.length <= 10) || 'Name must be less than 10 characters'
+                (v) => (v && v.length <= 50) || this.$t('validate.stringLength.system.blogAddress', { num: 50 })
             ],
             logoUrl: '',
             websiteRecordNumber: '',
-            websiteCopyright: ''
+            websiteCopyright: '',
+            fileList: [],
+            fileHeaders: {
+                'Content-Type': 'multipart/form-data'
+            }
         }
     },
     computed: {},
@@ -116,6 +123,29 @@ export default {
             const isJPG = file.type === 'image/png'
             const isLt2M = file.size / 1024 / 1024 < 2
             return isJPG && isLt2M
+        },
+        async fileUpload(param) {
+            const self = this
+            const formData = new FormData()
+            formData.append('file', param.file)
+            if (process.client) {
+                let token = window.localStorage.getItem('token')
+                if (token == null) {
+                    token = ''
+                }
+                self.$axios.setHeader('Authorization', 'Bearer ' + token)
+            }
+            self.$axios.setHeader('Content-Type', 'multipart/form-data;charset=UTF-8')
+            const result = await self.$axios.$post(baseUrl + '/common/file/upload', formData)
+
+            const data = result.data
+            if (result.code === 200) {
+                self.logoUrl = data
+            } else {
+                self.errorText = result.msg
+                self.isShow = true
+                self.loginBtnDisable = false
+            }
         }
     }
 }

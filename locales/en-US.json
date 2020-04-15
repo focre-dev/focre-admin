@@ -52,6 +52,10 @@
                 "email": "Email can only be up to {num} characters",
                 "password": "Password must be at most {num} characters",
                 "confirmPassword": "Confirm password can only be up to {num} characters"
+            },
+            "system": {
+                "blogTitle": "The blog title can only be {num} characters at most",
+                "blogAddress": "The blog address can only be up to {num} characters"
             }
         },
         "regexp": {
